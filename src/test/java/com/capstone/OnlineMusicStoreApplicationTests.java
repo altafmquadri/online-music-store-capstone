@@ -1,4 +1,4 @@
-package com.capstone.music;
+package com.capstone;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
