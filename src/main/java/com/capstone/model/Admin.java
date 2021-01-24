@@ -14,11 +14,12 @@ import lombok.Data;
 @Data
 @Entity
 public class Admin {
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String username;
 	private String password;
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-	private List<Song> songs; 
-
+	@OneToMany(mappedBy = "admin", cascade = CascadeType.ALL)
+	private List<Song> songs;
+	private List<Order> orders;
 }

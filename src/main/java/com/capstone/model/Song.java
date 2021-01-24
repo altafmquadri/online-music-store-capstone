@@ -15,14 +15,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Song {
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String title;
 	private String description;
+	private String artist;
 	private String genre;
 	private String format;
 	private double price;
 	@ManyToOne
 	private Admin admin;
-	
 }
