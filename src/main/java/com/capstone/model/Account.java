@@ -1,7 +1,5 @@
 package com.capstone.model;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,14 +14,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Customer {
-	
+public class Account {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String username;
-	private String password;
-	@OneToOne(mappedBy = "customer")
-	private Account account ;
-	private List<Order> orders;
-
+	private int creditCardNumber;
+	@OneToOne
+	private Customer customer;
 }
