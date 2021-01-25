@@ -1,9 +1,11 @@
 package com.capstone.model;
 
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
@@ -14,6 +16,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Embeddable
 public class Song {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,5 +28,6 @@ public class Song {
 	private String format;
 	private double price;
 	@ManyToOne
+	@JoinColumn(name = "admin_id")
 	private Admin admin;
 }
