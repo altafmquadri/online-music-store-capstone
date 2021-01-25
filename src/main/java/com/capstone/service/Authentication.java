@@ -1,19 +1,13 @@
 package com.capstone.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 
-import com.capstone.dao.AdminDAO;
-import com.capstone.dao.CustomerDAO;
 
-public class Authentication<T> implements AuthenticationInterface{
 
-	private T currentUser = null;
+public class Authentication implements AuthenticationInterface{
+
 	
-	@Autowired
-	AdminDAO adminDao;
 	
-	@Autowired
-	CustomerDAO customerDao;
+	
 	
 	@Override
 	public boolean authenticate(String userName, String password) {
@@ -32,13 +26,7 @@ public class Authentication<T> implements AuthenticationInterface{
 		
 	}
 
-	public T getCurrentUser() {
-		return currentUser;
-	}
-
-	public void setCurrentUser(T currentUser) {
-		this.currentUser = currentUser;
-	}
+	
 
 
 }
