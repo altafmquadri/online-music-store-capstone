@@ -1,5 +1,10 @@
 package com.capstone.exceptions;
 
-public class UniqueException {
+@SuppressWarnings("serial")
+public class UniqueException extends Exception {
+	
+	public UniqueException(String message) {
+		super(message);
+	}
 
 }

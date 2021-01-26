@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.capstone.dao.CustomerDAO;
+import com.capstone.exceptions.PasswordConfirmationException;
+import com.capstone.exceptions.UniqueException;
 import com.capstone.model.Customer;
 
 @RestController
@@ -28,21 +30,35 @@ public class CustomerLoginController {
 			@RequestParam("email") String email, @RequestParam("address") String address) {
 
 		String message = null;
-		if (password.equals(confirm)) {
-			Customer customer = new Customer();
-			customer.setUsername(name);
-			customer.setPassword(password);
-			customer.setPhoneNumber(phoneNumber);
-			customer.setEmail(email);
-			customer.setAddress(address);
-			custDao.save(customer);
-			message = "You have registered successfully";
-			return new ModelAndView("registration").addObject("message",message);
+		try {
+
+			Customer c = custDao.findOneByUsername(name).orElse(null);
+			Customer e = custDao.findOneByEmail(email).orElse(null);
+			System.out.println(c);
+			if (password.equals(confirm) && (c == null) && (e == null)) {
+				Customer customer = new Customer();
+				customer.setUsername(name);
+				customer.setPassword(password);
+				customer.setPhoneNumber(phoneNumber);
+				customer.setEmail(email);
+				customer.setAddress(address);
+				custDao.save(customer);
+				message = "You have registered successfully";
+				return new ModelAndView("registration").addObject("message", message);
+			} else if ((c != null) || (e != null)) {
+				throw new UniqueException("Username Or Email Already Taken");
+
+			} else {
+				throw new PasswordConfirmationException("Password And Confirmation Do Not Match");
+			}
+
+		} catch (PasswordConfirmationException | UniqueException e) {
+			message = e.getMessage();
 		}
-		message = "passwords dont match";
-		return new ModelAndView("registration").addObject("message",message);
+
+		return new ModelAndView("registration").addObject("message", message);
 	}
-	
+
 	@GetMapping("/login")
 	public ModelAndView showLogin() {
 		return new ModelAndView("login");
