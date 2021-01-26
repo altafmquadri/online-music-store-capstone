@@ -28,6 +28,7 @@ public class LoginController {
 		
 		return new ModelAndView("adminlogin");
 	}
+	
 	@PostMapping("admin/login")
 	public ModelAndView verifyLogin(@RequestParam("name") String name,@RequestParam("password") String password,ModelMap model) {
 		boolean isValidLogin = auth.authenticate(name, password, adminDao);

@@ -4,13 +4,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Welcome</title>
+<title>Admin Song Page</title>
 </head>
 
 <body>
-
 	<div>
-		<h1>Welcome ${admin.getUsername()}</h1>
+		<nav>
+			Welcome ${admin.getUsername()}
+		</nav>
+	</div>
+	<div>
+		<h1>Songs</h1>
 	</div>
 
 </body>
