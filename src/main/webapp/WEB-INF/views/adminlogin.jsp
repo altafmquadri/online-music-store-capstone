@@ -15,7 +15,5 @@
 				<input type="button" value="Submit">
 			</form>
 		</div>
-	
-	
 </body>
 </html>
