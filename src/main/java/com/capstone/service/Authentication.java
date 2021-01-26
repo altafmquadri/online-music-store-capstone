@@ -1,32 +1,26 @@
 package com.capstone.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Service;
 
+import com.capstone.dao.AdminDAO;
 
-
-public class Authentication implements AuthenticationInterface{
+@Service
+public class Authentication {
 
 	
 	
-	
-	
-	@Override
-	public boolean authenticate(String userName, String password) {
-		//if I pass a customer it should use customerDao 
+	public <T> boolean authenticate(String userName, String password, T dao) {
 		
-		//if I pass an admin it should use the adminDao
-		
-		//some method implementation
-		
+		dao.findOneByUsernameAndPassword(userName, password);
+
 		return false;
 	}
-	
-	@Override
+
 	public void logout() {
 		// TODO Auto-generated method stub
-		
+
 	}
-
-	
-
 
 }
