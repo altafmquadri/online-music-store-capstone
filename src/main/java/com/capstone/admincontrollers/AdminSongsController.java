@@ -65,5 +65,12 @@ public class AdminSongsController {
 		songDao.save(song);
 		return new ModelAndView("redirect:/admin/songs");
 	}
+	
+	@GetMapping("admin/songs/deletesong/{id}")
+	public ModelAndView deleteSong(@PathVariable("id") int id) {
+		songDao.deleteById(id);
+		return new ModelAndView("redirect:/admin/songs");
+	}
+	
 
 }
