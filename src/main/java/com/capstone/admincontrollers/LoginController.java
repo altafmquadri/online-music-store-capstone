@@ -32,7 +32,7 @@ public class LoginController {
 	public ModelAndView verifyLogin(@RequestParam("name") String name,@RequestParam("password") String password,ModelMap model) {
 	
 		boolean isValidLogin = auth.authenticate(name, password, adminDao);
-		return new ModelAndView("welcome");
+		return new ModelAndView("Welcome");
 	}
 
 }
