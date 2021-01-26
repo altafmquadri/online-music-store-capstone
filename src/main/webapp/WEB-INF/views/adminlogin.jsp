@@ -9,10 +9,10 @@
 <body>
 	<h1>Admin Login </h1>
 		<div>
-			<form>
+			<form method="post">
 				Username:<input type="text" name="name">
 				Password:<input type="password" name="password">
-				<input type="button" value="Submit">
+				<input type="submit" value="Submit">
 			</form>
 		</div>
 </body>
