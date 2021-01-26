@@ -7,13 +7,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Admin Login </h1>
-		<div>
-			<form method="post">
-				Username:<input type="text" name="name">
-				Password:<input type="password" name="password">
+	<h1>Admin Login</h1>
+	<div>
+		<form method="post">
+			<div>
+				<label>Username:</label>
+				 <input type="text" name="name">
+			</div>
+
+			<div>
+				<label>Password:</label>
+				 <input type="password" name="password">
+			</div>
+			<div>
 				<input type="submit" value="Submit">
-			</form>
-		</div>
+			</div>
+		</form>
+	</div>
 </body>
 </html>
