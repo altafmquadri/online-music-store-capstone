@@ -12,8 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.capstone.dao.AdminDAO;
 import com.capstone.service.Authentication;
 
-
-
 @RestController
 @SessionAttributes("admin")
 public class LoginController {
@@ -25,7 +23,6 @@ public class LoginController {
 	
 	@GetMapping("admin/login")
 	public ModelAndView showloginpage() {
-		
 		return new ModelAndView("adminlogin");
 	}
 	
@@ -34,7 +31,7 @@ public class LoginController {
 		boolean isValidLogin = auth.authenticate(name, password, adminDao);
 		if (isValidLogin) {
 			model.put("admin", auth.getAdmin());
-			return new ModelAndView("welcome");
+			return new ModelAndView( "redirect:/admin/songs");
 		}
 		return new ModelAndView("");
 	}
