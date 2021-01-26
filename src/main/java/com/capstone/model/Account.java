@@ -20,6 +20,6 @@ public class Account {
 	private int id;
 	private int creditCardNumber;
 	@OneToOne
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "customer_id")
 	private Customer customer;
 }
