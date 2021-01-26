@@ -1,10 +1,10 @@
 package com.capstone.admincontrollers;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,20 +14,20 @@ import com.capstone.dao.SongDAO;
 import com.capstone.model.Song;
 
 @RestController
-@SessionAttributes({"admin", "songs"})
+@SessionAttributes({ "admin", "songs" })
 public class AdminSongsController {
-	
+
 	@Autowired
 	SongDAO songDao;
 
 	@GetMapping("admin/songs")
-	public ModelAndView showPage( ModelMap model) {
-		List<Song> songs =  (List<Song>) songDao.findAll();
-		model.put("songs",songs);
-		
+	public ModelAndView showPage(ModelMap model) {
+		List<Song> songs = (List<Song>) songDao.findAll();
+		model.put("songs", songs);
+
 		return new ModelAndView("adminsongs");
 	}
-	
+
 	@PostMapping("admin/songs")
 	public ModelAndView addSong(@RequestParam("title") String title, @RequestParam("description") String description,
 			@RequestParam("artist") String artist, @RequestParam("genre") String genre,
@@ -42,5 +42,13 @@ public class AdminSongsController {
 		songDao.save(song);
 		return new ModelAndView("redirect:/admin/songs");
 	}
+
+	@GetMapping("admin/songs/editsong/{id}")
+	public ModelAndView editSong(@PathVariable("id") int id) {
+		Song song = songDao.findById(id).get();
+		return new ModelAndView("editsong").addObject(song);
+	}
 	
+
+
 }

@@ -75,8 +75,8 @@
 					<td><%=s.getGenre()%></td>
 					<td><%=s.getFormat()%></td>
 					<td><%=s.getPrice()%></td>
-					<td><a href="/admin/song/edit/<%=s.getId()%>">Edit</a></td>
-					<td><a href="/admin/song/delete/<%=s.getId()%>">Delete</a></td>
+					<td><a href="/admin/songs/editsong/<%=s.getId()%>">Edit</a></td>
+					<td><a href="/admin/songs/delete/<%=s.getId()%>">Delete</a></td>
 				</tr>
 				<%
 					}
