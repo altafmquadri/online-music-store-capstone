@@ -25,6 +25,9 @@
 		<div>
 			<form method="post">
 				<div>
+					<label>Song Image</label> <input type="text" name="imageUrl">
+				</div>
+				<div>
 					<label>Song Title</label> <input type="text" name="title">
 				</div>
 				<div>
@@ -52,6 +55,7 @@
 		<div>
 			<table border='1' style="width: 40%">
 				<tr>
+					<th>Image</th>
 					<th>Title</th>
 					<th>Description</th>
 					<th>Artist</th>
@@ -69,6 +73,7 @@
 					for (Song s : songs) {
 				%>
 				<tr style="text-align: center">
+					<td> <img style="width: 75px; height:75px" src="<%=s.getImageUrl()%>" alt="song image"/></td>
 					<td><%=s.getTitle()%></td>
 					<td><%=s.getDescription()%></td>
 					<td><%=s.getArtist()%></td>

@@ -11,6 +11,10 @@
 	<div>
 			<form method="post">
 				<div>
+					<label>Song Title</label> <input type="text" name="imageUrl" value="${song.getImageUrl()}">
+				</div>
+			
+				<div>
 					<label>Song Title</label> <input type="text" name="title" value="${song.getTitle()}">
 				</div>
 				<div>

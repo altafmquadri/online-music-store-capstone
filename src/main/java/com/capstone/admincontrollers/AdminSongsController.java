@@ -31,8 +31,9 @@ public class AdminSongsController {
 	@PostMapping("admin/songs")
 	public ModelAndView addSong(@RequestParam("title") String title, @RequestParam("description") String description,
 			@RequestParam("artist") String artist, @RequestParam("genre") String genre,
-			@RequestParam("format") String format, @RequestParam("price") double price) {
+			@RequestParam("format") String format, @RequestParam("price") double price,@RequestParam("imageUrl") String imageUrl) {
 		Song song = new Song();
+		song.setImageUrl(imageUrl);
 		song.setTitle(title);
 		song.setDescription(description);
 		song.setArtist(artist);
@@ -53,9 +54,10 @@ public class AdminSongsController {
 	public ModelAndView editSong(@PathVariable("id") int id, @RequestParam("title") String title,
 			@RequestParam("description") String description, @RequestParam("artist") String artist,
 			@RequestParam("genre") String genre, @RequestParam("format") String format,
-			@RequestParam("price") double price) {
+			@RequestParam("price") double price,@RequestParam("imageUrl") String imageUrl) {
 
 		Song song = songDao.findById(id).get();
+		song.setImageUrl(imageUrl);
 		song.setTitle(title);
 		song.setDescription(description);
 		song.setArtist(artist);

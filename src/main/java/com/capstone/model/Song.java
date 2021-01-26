@@ -26,4 +26,5 @@ public class Song {
 	private String genre;
 	private String format;
 	private double price;
+	private String imageUrl;
 }
