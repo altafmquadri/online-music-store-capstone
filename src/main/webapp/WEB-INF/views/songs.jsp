@@ -1,0 +1,73 @@
+<%@page import="com.capstone.model.Customer"%>
+<%@page import="com.capstone.model.Song"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> Song Page</title>
+</head>
+
+<body>
+
+	<%
+		Customer c = (Customer) session.getAttribute("customer");
+	if (c == null) {
+		response.sendRedirect("/login");
+	}
+	%>
+	
+
+	
+
+	<a href="/logout">Logout</a>
+	<div>
+		<nav>Welcome ${customer.getId()}</nav>
+	</div>
+	<div>
+		<h1>Songs</h1>
+		
+
+		<div>
+			<table border='1' style="width: 40%">
+				<tr>
+					<th>Image</th>
+					<th>Title</th>
+					<th>Description</th>
+					<th>Artist</th>
+					<th>Genre</th>
+					<th>Format</th>
+					<th>Price</th>
+					
+				</tr>
+
+				<%
+					@SuppressWarnings("unchecked")
+				List<Song> songs = (List<Song>) session.getAttribute("songs");
+				%>
+				<%
+					for (Song s : songs) {
+				%>
+				<tr style="text-align: center">
+					<td> <img style="width: 75px; height:75px" src="<%=s.getImageUrl()%>" alt="song image"/></td>
+					<td><%=s.getTitle()%></td>
+					<td><%=s.getDescription()%></td>
+					<td><%=s.getArtist()%></td>
+					<td><%=s.getGenre()%></td>
+					<td><%=s.getFormat()%></td>
+					<td><%=s.getPrice()%></td>
+					
+				</tr>
+				<%
+					}
+				%>
+			</table>
+		</div>
+
+
+	</div>
+
+</body>
+</html>

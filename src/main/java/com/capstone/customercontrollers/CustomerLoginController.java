@@ -1,21 +1,34 @@
 package com.capstone.customercontrollers;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 import com.capstone.dao.CustomerDAO;
 import com.capstone.exceptions.PasswordConfirmationException;
 import com.capstone.exceptions.UniqueException;
 import com.capstone.model.Customer;
+import com.capstone.service.Authentication;
 
 @RestController
+@SessionAttributes("customer")
 public class CustomerLoginController {
 
 	@Autowired
 	CustomerDAO custDao;
+	
+	@Autowired
+	Authentication auth;
 
 	@GetMapping("/register")
 	public ModelAndView showRegistration() {
@@ -58,8 +71,26 @@ public class CustomerLoginController {
 	}
 
 	@GetMapping("/login")
-	public ModelAndView showLogin() {
+	public ModelAndView showLogin(){
 		return new ModelAndView("login");
 	}
 
+	@PostMapping("/login")
+	public ModelAndView login(@RequestParam("name") String name,@RequestParam("password") String password, ModelMap model ){
+		
+		boolean isValid = auth.authenticate(name, password, custDao);
+		if(isValid) {
+			model.put("customer", auth.getCustomer());
+			return new ModelAndView("redirect:/songs");
+		}
+		return new ModelAndView("login");
+	}
+	
+	@GetMapping("/logout")
+	public ModelAndView logout(SessionStatus status) {
+		auth.logout();
+		status.setComplete();
+		return new ModelAndView("redirect:/login");
+	}
+	
 }
