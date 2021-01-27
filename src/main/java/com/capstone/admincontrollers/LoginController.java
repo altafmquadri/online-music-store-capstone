@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.capstone.dao.AdminDAO;
@@ -34,6 +35,13 @@ public class LoginController {
 			return new ModelAndView( "redirect:/admin/songs");
 		}
 		return new ModelAndView("");
+	}
+	
+	@GetMapping("/admin/logout")
+	public ModelAndView logout(SessionStatus status) {
+		auth.logout();
+		status.setComplete();
+		return new ModelAndView("redirect:/admin/login");
 	}
 
 }

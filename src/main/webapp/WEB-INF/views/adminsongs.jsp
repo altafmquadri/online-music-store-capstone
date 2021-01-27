@@ -18,33 +18,43 @@
 		}
 	%>
 	<div>
+		<nav><a href="/admin/logout">Logout</a></nav>
+	</div>
+	<div>
 		<nav>Welcome ${admin.getUsername()}</nav>
 	</div>
+	
 	<div>
 		<h1>Songs</h1>
 		<div>
 			<form method="post">
 				<div>
-					<label>Song Image</label> <input type="text" name="imageUrl" required="required">
+					<label>Song Image</label> 
+					<input type="text" name="imageUrl" required="required">
 				</div>
 				<div>
-					<label>Song Title</label> <input type="text" name="title" required="required">
+					<label>Song Title</label> 
+					<input type="text" name="title" required="required">
 				</div>
 				<div>
-					<label>Song Description</label> <input type="text"
-						name="description" required="required">
+					<label>Song Description</label> 
+					<input type="text" name="description" required="required">
 				</div>
 				<div>
-					<label>Artist</label> <input type="text" name="artist" required="required">
+					<label>Artist</label> 
+					<input type="text" name="artist" required="required">
 				</div>
 				<div>
-					<label>Genre</label> <input type="text" name="genre" required="required">
+					<label>Genre</label>
+					 <input type="text" name="genre" required="required">
 				</div>
 				<div>
-					<label>Format</label> <input type="text" name="format" required="required">
+					<label>Format</label> 
+					<input type="text" name="format" required="required">
 				</div>
 				<div>
-					<label>Price</label> <input type="text" name="price" required="required">
+					<label>Price</label> 
+					<input type="text" name="price" required="required">
 				</div>
 				<div>
 					<input type='submit' value="Add Song" >
@@ -64,7 +74,6 @@
 					<th>Price</th>
 					<th colspan="2">Update</th>
 				</tr>
-
 				<%
 					@SuppressWarnings("unchecked")
 					List<Song> songs = (List<Song>) session.getAttribute("songs");
@@ -88,9 +97,6 @@
 				%>
 			</table>
 		</div>
-
-
 	</div>
-
 </body>
 </html>
