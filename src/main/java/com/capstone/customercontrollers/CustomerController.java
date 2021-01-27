@@ -1,8 +1,5 @@
 package com.capstone.customercontrollers;
-
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.ui.ModelMap;
@@ -11,9 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.capstone.dao.SongDAO;
-import com.capstone.model.Cart;
 import com.capstone.model.Song;
 import com.capstone.service.CartService;
 
@@ -51,10 +46,17 @@ public class CustomerController {
 	
 	@GetMapping("/cart")
 	public ModelAndView showCart() {
-		List<Song> songs = cs.getSongs();
-		
+		List<Song> songs = cs.getSongs();		
 		return new ModelAndView("cart").addObject("cart", songs);
 	}
+	
+	@GetMapping("/removeitem/{id}")
+	public ModelAndView removeItem(@PathVariable("id") int id) {
+		cs.deleteItemById(id);
+		return new ModelAndView("redirect:/cart");		
+	}
+	
+	
 	
 	
 }
