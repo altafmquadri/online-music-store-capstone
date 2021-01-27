@@ -28,7 +28,16 @@
 	</div>
 	<div>
 		<h1>Songs</h1>
-		
+		<div>
+			<form >
+				Filter:
+				<input type="text" name="keyword">
+				&nbsp;
+				<input type="submit" name="Search">
+				&nbsp;
+							
+			</form>
+		</div>
 
 		<div>
 			<table border='1' style="width: 40%">

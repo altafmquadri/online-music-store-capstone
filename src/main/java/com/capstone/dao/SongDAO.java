@@ -3,20 +3,16 @@ package com.capstone.dao;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import com.capstone.model.Song;
 
 public interface SongDAO extends CrudRepository<Song, Integer> {
-
-	public Optional<Song> findByTitle(String title);
-
-	public Optional<Song> findByDescription(String description);
-
-	public Optional<List<Song>> findAllByArtist(String artist);
-
-	public Optional<List<Song>> findAllByGenre(String genre);
-
-	public Optional<List<Song>> findAllByFormat(String format);
+	
+	@Query("SELECT s FROM Song s WHERE "+
+	"CONCAT(s.id, s.title, s.description, s.artist, s.genre, s.format)"+
+			" LIKE %?1%")	
+	public List<Song> findAll(String keyword);
 
 }
