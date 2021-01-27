@@ -25,29 +25,29 @@
 		<div>
 			<form method="post">
 				<div>
-					<label>Song Image</label> <input type="text" name="imageUrl">
+					<label>Song Image</label> <input type="text" name="imageUrl" required="required">
 				</div>
 				<div>
-					<label>Song Title</label> <input type="text" name="title">
+					<label>Song Title</label> <input type="text" name="title" required="required">
 				</div>
 				<div>
 					<label>Song Description</label> <input type="text"
-						name="description">
+						name="description" required="required">
 				</div>
 				<div>
-					<label>Artist</label> <input type="text" name="artist">
+					<label>Artist</label> <input type="text" name="artist" required="required">
 				</div>
 				<div>
-					<label>Genre</label> <input type="text" name="genre">
+					<label>Genre</label> <input type="text" name="genre" required="required">
 				</div>
 				<div>
-					<label>Format</label> <input type="text" name="format">
+					<label>Format</label> <input type="text" name="format" required="required">
 				</div>
 				<div>
-					<label>Price</label> <input type="text" name="price">
+					<label>Price</label> <input type="text" name="price" required="required">
 				</div>
 				<div>
-					<input type='submit' value="Add Song">
+					<input type='submit' value="Add Song" >
 				</div>
 			</form>
 		</div>
