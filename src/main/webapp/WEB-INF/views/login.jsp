@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<div>
+		<nav>
+			<a href="/register">Registration</a>
+		</nav>
+	</div>
 	<h1>Login</h1>
 	<div>
 		<form method="post">

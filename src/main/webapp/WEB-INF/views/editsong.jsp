@@ -7,7 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Hello ${song.getTitle()}</h1>
+	<div>
+		<div>
+			<nav><a href="/admin/songs">Home</a></nav>
+		</div>
+		<div>
+			<nav><a href="/admin/logout">Logout</a></nav>
+		</div>
+	</div>
+	<h3>Edit ${song.getTitle()}</h3>
 	<div>
 		<form method="post">
 			<div>

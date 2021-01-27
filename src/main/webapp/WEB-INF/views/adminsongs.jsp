@@ -18,10 +18,12 @@
 		}
 	%>
 	<div>
-		<nav><a href="/admin/logout">Logout</a></nav>
-	</div>
-	<div>
-		<nav>Welcome ${admin.getUsername()}</nav>
+		<div>
+			<nav>Welcome ${admin.getUsername()}</nav>
+		</div>
+		<div>
+			<nav><a href="/admin/logout">Logout</a></nav>
+		</div>
 	</div>
 	
 	<div>

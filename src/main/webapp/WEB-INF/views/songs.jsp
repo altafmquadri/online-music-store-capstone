@@ -7,36 +7,36 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <title>Song Page</title>
 </head>
-
 <body>
-
 	<%
 		Customer c = (Customer) session.getAttribute("customer");
 		if (c == null) {
 			response.sendRedirect("/login");
 		}
 	%>
-
-	<a href="/logout">Logout</a>
-	
 	<div>
 		<div>
-			<nav>Welcome ${customer.getId()}</nav>
+			<nav>Welcome ${customer.getUsername()}</nav>
 		</div>
 		<div>
 			<nav><a href="/cart">Cart</a> <span>${cart.size()}</span></nav>
+		</div>
+		<div>
+			<nav><a href="/logout">Logout</a></nav>
 		</div>
 	</div>
 	<div>
 		<h1>Songs</h1>
 		<div>
-			<form>
+			<form >
 				<div>
 					<label>Filter:</label> 
 					<input type="text" name="keyword">
 					<input type="submit" name="Search">
+					<a href="/songs">Clear</a>
 				</div>
 			</form>
 		</div>
