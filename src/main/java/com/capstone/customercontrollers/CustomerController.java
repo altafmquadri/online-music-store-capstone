@@ -60,9 +60,5 @@ public class CustomerController {
 	public ModelAndView clearCart() {
 		cs.removeAll();
 		return new ModelAndView("redirect:/songs");
-	}
-	
-	
-	
-	
+	}	
 }
