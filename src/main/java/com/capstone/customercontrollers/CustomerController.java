@@ -56,6 +56,12 @@ public class CustomerController {
 		return new ModelAndView("redirect:/cart");		
 	}
 	
+	@GetMapping("/clearcart")
+	public ModelAndView clearCart() {
+		cs.removeAll();
+		return new ModelAndView("redirect:/songs");
+	}
+	
 	
 	
 	

@@ -28,13 +28,19 @@
 		<div>
 			<nav><a href="#">Proceed to Checkout</a></nav>
 		</div>
-		<div>
-			<nav><a href="/songs">Continue Shopping</a> </nav>
-		</div>
-
+		
+		
 	</div>
 	<div>
 		<h1>Cart</h1>
+		<div>
+			<a href="/songs">Continue Shopping</a> 
+		</div>
+		<div>
+			<a href="/clearcart">Clear Cart</a>
+		</div>
+		<div>
+		</div>
 		<div>
 			<table border='1' style="width: 40%">
 				<tr>
