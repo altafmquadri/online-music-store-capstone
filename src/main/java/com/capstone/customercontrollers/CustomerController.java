@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.capstone.dao.SongDAO;
+import com.capstone.model.Cart;
 import com.capstone.model.Song;
 import com.capstone.service.CartService;
 
@@ -47,4 +48,13 @@ public class CustomerController {
 		model.put("cart", cs.getSongs());
 		return new ModelAndView("redirect:/songs");
 	}
+	
+	@GetMapping("/cart")
+	public ModelAndView showCart() {
+		List<Song> songs = cs.getSongs();
+		
+		return new ModelAndView("cart").addObject("cart", songs);
+	}
+	
+	
 }

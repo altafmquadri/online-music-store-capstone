@@ -1,15 +1,15 @@
-<%@page import="com.capstone.model.Customer"%>
 <%@page import="com.capstone.model.Song"%>
+<%@page import="com.capstone.model.Cart"%>
 <%@page import="java.util.List"%>
+<%@page import="com.capstone.model.Customer"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Song Page</title>
+<title>Insert title here</title>
 </head>
-
 <body>
 
 	<%
@@ -26,21 +26,15 @@
 			<nav>Welcome ${customer.getId()}</nav>
 		</div>
 		<div>
-			<nav><a href="/cart">Cart</a> <span>${cart.size()}</span></nav>
+			<nav><a href="#">Proceed to Checkout</a></nav>
 		</div>
-	</div>
-	<div>
-		<h1>Songs</h1>
 		<div>
-			<form>
-				<div>
-					<label>Filter:</label> 
-					<input type="text" name="keyword">
-					<input type="submit" name="Search">
-				</div>
-			</form>
+			<nav><a href="/songs">Continue Shopping</a> </nav>
 		</div>
 
+	</div>
+	<div>
+		<h1>Cart</h1>
 		<div>
 			<table border='1' style="width: 40%">
 				<tr>
@@ -56,10 +50,10 @@
 
 				<%
 					@SuppressWarnings("unchecked")
-					List<Song> songs = (List<Song>) session.getAttribute("songs");
+					List<Song> songCart = (List<Song>) session.getAttribute("cart");
 				%>
 				<%
-					for (Song s : songs) {
+					for (Song s : songCart) {
 				%>
 				<tr style="text-align: center">
 					<td><img style="width: 75px; height: 75px"
@@ -70,13 +64,14 @@
 					<td><%=s.getGenre()%></td>
 					<td><%=s.getFormat()%></td>
 					<td><%=s.getPrice()%></td>
-					<td><a href="/addtocart/<%=s.getId()%>">Add To Cart</a></td>
+					<td><a href="/removeitem/<%=s.getId()%>">Remove item</a></td>
 				</tr>
 				<%
 				}
 				%>
 			</table>
 		</div>
+		
 	</div>
 </body>
 </html>
