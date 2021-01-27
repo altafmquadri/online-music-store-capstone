@@ -22,7 +22,12 @@
 	<a href="/logout">Logout</a>
 	
 	<div>
-		<nav>Welcome ${customer.getId()}</nav>
+		<div>
+			<nav>Welcome ${customer.getId()}</nav>
+		</div>
+		<div>
+			<nav>Cart <span>${cart.size()}</span></nav>
+		</div>
 	</div>
 	<div>
 		<h1>Songs</h1>
@@ -46,6 +51,7 @@
 					<th>Genre</th>
 					<th>Format</th>
 					<th>Price</th>
+					<th colspan="2">Purchase</th>
 				</tr>
 
 				<%
@@ -64,6 +70,7 @@
 					<td><%=s.getGenre()%></td>
 					<td><%=s.getFormat()%></td>
 					<td><%=s.getPrice()%></td>
+					<td><a href="/addtocart/<%=s.getId()%>">Add To Cart</a></td>
 				</tr>
 				<%
 				}

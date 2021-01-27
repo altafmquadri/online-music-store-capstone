@@ -1,5 +1,6 @@
 package com.capstone.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -13,7 +14,7 @@ import lombok.Data;
 @Service
 public class CartService implements CartDAO {
 	
-	private List<Song> songs;
+	private List<Song> songs = new ArrayList<>();
 
 	@Override
 	public Song addToCart(Song song) {

@@ -14,9 +14,10 @@ import com.capstone.exceptions.PasswordConfirmationException;
 import com.capstone.exceptions.UniqueException;
 import com.capstone.model.Customer;
 import com.capstone.service.Authentication;
+import com.capstone.service.CartService;
 
 @RestController
-@SessionAttributes("customer")
+@SessionAttributes({"customer", "songs", "cart"})
 public class CustomerLoginController {
 
 	@Autowired
@@ -24,6 +25,9 @@ public class CustomerLoginController {
 	
 	@Autowired
 	Authentication auth;
+	
+	@Autowired
+	CartService cs;
 
 	@GetMapping("/register")
 	public ModelAndView showRegistration() {
@@ -84,6 +88,7 @@ public class CustomerLoginController {
 	@GetMapping("/logout")
 	public ModelAndView logout(SessionStatus status) {
 		auth.logout();
+		cs.removeAll();
 		status.setComplete();
 		return new ModelAndView("redirect:/login");
 	}
