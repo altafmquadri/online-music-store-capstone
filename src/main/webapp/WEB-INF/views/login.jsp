@@ -12,16 +12,18 @@
 		<form method="post">
 			<div>
 				<label>Username:</label>
-				 <input type="text" name="name">
+				<input type="text" name="name">
 			</div>
 
 			<div>
 				<label>Password:</label>
-				 <input type="password" name="password">
+				<input type="password" name="password">
 			</div>
+			
 			<div>
 				<input type="submit" value="Login">
 			</div>
+			
 		</form>
 	</div>
 </body>

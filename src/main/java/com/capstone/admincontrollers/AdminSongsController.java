@@ -73,6 +73,4 @@ public class AdminSongsController {
 		songDao.deleteById(id);
 		return new ModelAndView("redirect:/admin/songs");
 	}
-	
-
 }

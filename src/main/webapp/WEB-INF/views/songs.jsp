@@ -7,35 +7,32 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title> Song Page</title>
+<title>Song Page</title>
 </head>
 
 <body>
 
 	<%
 		Customer c = (Customer) session.getAttribute("customer");
-	if (c == null) {
-		response.sendRedirect("/login");
-	}
+		if (c == null) {
+			response.sendRedirect("/login");
+		}
 	%>
-	
-
-	
 
 	<a href="/logout">Logout</a>
+	
 	<div>
 		<nav>Welcome ${customer.getId()}</nav>
 	</div>
 	<div>
 		<h1>Songs</h1>
 		<div>
-			<form >
-				Filter:
-				<input type="text" name="keyword">
-				&nbsp;
-				<input type="submit" name="Search">
-				&nbsp;
-							
+			<form>
+				<div>
+					<label>Filter:</label> 
+					<input type="text" name="keyword">
+					<input type="submit" name="Search">
+				</div>
 			</form>
 		</div>
 
@@ -49,34 +46,30 @@
 					<th>Genre</th>
 					<th>Format</th>
 					<th>Price</th>
-					
 				</tr>
 
 				<%
 					@SuppressWarnings("unchecked")
-				List<Song> songs = (List<Song>) session.getAttribute("songs");
+					List<Song> songs = (List<Song>) session.getAttribute("songs");
 				%>
 				<%
 					for (Song s : songs) {
 				%>
 				<tr style="text-align: center">
-					<td> <img style="width: 75px; height:75px" src="<%=s.getImageUrl()%>" alt="song image"/></td>
+					<td><img style="width: 75px; height: 75px"
+						src="<%=s.getImageUrl()%>" alt="song image" /></td>
 					<td><%=s.getTitle()%></td>
 					<td><%=s.getDescription()%></td>
 					<td><%=s.getArtist()%></td>
 					<td><%=s.getGenre()%></td>
 					<td><%=s.getFormat()%></td>
 					<td><%=s.getPrice()%></td>
-					
 				</tr>
 				<%
-					}
+				}
 				%>
 			</table>
 		</div>
-
-
 	</div>
-
 </body>
 </html>

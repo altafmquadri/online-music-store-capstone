@@ -30,9 +30,7 @@ public class Authentication {
 		Admin admin = adminDao.findOneByUsernameAndPassword(userName, password).get();
 		setAdmin(admin);
 		isValid = true;
-
 		return isValid;
-
 	}
 
 	public boolean authenticate(String userName, String password, CustomerDAO dao) {
@@ -43,13 +41,10 @@ public class Authentication {
 		setCustomer(customer);
 		isValid = true;
 		return isValid;
-
 	}
 
 	public void logout() {
 		setCustomer(null);
 		setAdmin(null);
-
 	}
-
 }

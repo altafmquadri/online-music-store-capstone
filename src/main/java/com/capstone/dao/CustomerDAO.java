@@ -11,6 +11,4 @@ public interface CustomerDAO extends CrudRepository<Customer, Integer>{
 	 public Optional<Customer>findOneByUsernameAndPassword(String username, String password);
 	 public Optional<Customer>findOneByUsername(String username);
 	 public Optional<Customer>findOneByEmail(String email);
-
-
 }

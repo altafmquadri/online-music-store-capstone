@@ -13,9 +13,9 @@
 <body>
 	<%
 		Admin admin = (Admin) session.getAttribute("admin");
-	if (admin == null) {
-		response.sendRedirect("/admin/login");
-	}
+		if (admin == null) {
+			response.sendRedirect("/admin/login");
+		}
 	%>
 	<div>
 		<nav>Welcome ${admin.getUsername()}</nav>
@@ -67,7 +67,7 @@
 
 				<%
 					@SuppressWarnings("unchecked")
-				List<Song> songs = (List<Song>) session.getAttribute("songs");
+					List<Song> songs = (List<Song>) session.getAttribute("songs");
 				%>
 				<%
 					for (Song s : songs) {
