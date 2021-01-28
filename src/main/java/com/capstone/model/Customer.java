@@ -1,7 +1,11 @@
 package com.capstone.model;
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,6 +38,6 @@ public class Customer {
 	@Column(unique = true)
 	private String email;
 	private String address;	
-	@OneToMany(mappedBy = "customer")
-	private List<Order> orders;
+	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<Order> orders = new ArrayList<>();
 }

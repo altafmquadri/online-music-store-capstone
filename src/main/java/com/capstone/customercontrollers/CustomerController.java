@@ -1,6 +1,9 @@
 package com.capstone.customercontrollers;
 import java.util.Date;
 import java.util.List;
+
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.ui.ModelMap;
@@ -12,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import com.capstone.dao.CustomerDAO;
-import com.capstone.dao.MailingDAO;
+//import com.capstone.dao.MailingDAO;
 import com.capstone.dao.OrderDAO;
 import com.capstone.dao.SongDAO;
 import com.capstone.model.Customer;
@@ -23,6 +26,7 @@ import com.capstone.service.CartService;
 
 @RestController
 @SessionAttributes({"customer", "songs", "cart"})
+@Transactional
 public class CustomerController {
 
 	@Autowired
@@ -33,9 +37,6 @@ public class CustomerController {
 	
 	@Autowired
 	OrderDAO orderDao;
-	
-	@Autowired
-	MailingDAO md;
 	
 	@Autowired
 	CustomerDAO custDao;
@@ -106,23 +107,21 @@ public class CustomerController {
 		ma.setState(state);
 		ma.setZip(zip);
 		Order o=new Order();
-		o.setOrderedSongs(cs.getSongs());
+		
 		o.setStatus("ordered");
 		o.setDate(new Date());
 		c.getOrders().add(o);		
 		o.setCustomer(c);
-		custDao.save(c);
 		o.setMailingAddress(ma);
-		ma.setOrder(o);
+		
+		
+		for(Song s: cs.getSongs()) {
+			s.setOrder(o);
+			o.getOrderedSongs().add(s);
+		}
 		orderDao.save(o);
-		md.save(ma);
+
 		cs.removeAll();
 		return new ModelAndView("success");		
 	}
-	
-	
-	
-	
-	
-	
 }
