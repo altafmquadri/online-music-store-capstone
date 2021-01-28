@@ -20,7 +20,7 @@ public class MailingAddress {
 	private String street;
 	private String city;
 	private String state;
-	private int zipcode;
+	private int zip;
 	@OneToOne
 	private Order order;
 

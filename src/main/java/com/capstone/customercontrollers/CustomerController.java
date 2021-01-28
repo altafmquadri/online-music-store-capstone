@@ -1,9 +1,6 @@
 package com.capstone.customercontrollers;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.ui.ModelMap;
@@ -14,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.capstone.dao.CustomerDAO;
 import com.capstone.dao.MailingDAO;
 import com.capstone.dao.OrderDAO;
@@ -108,7 +104,7 @@ public class CustomerController {
 		ma.setStreet(street);
 		ma.setCity(city);
 		ma.setState(state);
-		ma.setZipcode(zip);
+		ma.setZip(zip);
 		Order o=new Order();
 		o.setOrderedSongs(cs.getSongs());
 		o.setStatus("ordered");
