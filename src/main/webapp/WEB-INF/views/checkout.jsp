@@ -19,26 +19,22 @@
 		}
 	%>
 	
-	
+<div>
 	<div>
 		<div>
 			<h3>Welcome ${customer.getUsername()}</h3>
 		</div>
 	
 		<div>
+			<nav><a href="/songs">Home</a></nav>
+		</div>
+		<div>
 			<nav><a href="/logout">Logout</a></nav>
 		</div>
 	</div>
 	<div>
-		<h1>Cart</h1>
-		<div>
-			<a href="/songs">Continue Shopping</a> 
-		</div>
-		<div>
-			<a href="/clearcart">Clear Cart</a>
-		</div>
-		<div>
-		</div>
+		<h1>Checkout</h1>		
+	</div>		
 		<div>
 			<table border='1' style="width: 40%">
 				<tr>
@@ -48,8 +44,7 @@
 					<th>Artist</th>
 					<th>Genre</th>
 					<th>Format</th>
-					<th>Price</th>
-					<th colspan="2">Purchase</th>
+					<th colspan="2">Price</th>					
 				</tr>
 
 				<%
@@ -68,14 +63,18 @@
 					<td><%=s.getGenre()%></td>
 					<td><%=s.getFormat()%></td>
 					<td><%=s.getPrice()%></td>
-					<td><a href="/removeitem/<%=s.getId()%>">Remove item</a></td>
 				</tr>
+								
 				<%
 				}
 				%>
+					<tr>
+						<td colspan="6">Total</td>	
+						<td>${total}</td>
+					</tr>
 			</table>
 			<div>
-				<a href="/checkout">Proceed to Checkout</a>
+				<a href="#">Place Order</a>
 			</div>		
 		</div>
 		

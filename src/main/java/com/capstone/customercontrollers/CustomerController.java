@@ -1,5 +1,8 @@
 package com.capstone.customercontrollers;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.ui.ModelMap;
@@ -8,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.capstone.dao.OrderDAO;
 import com.capstone.dao.SongDAO;
 import com.capstone.model.Song;
 import com.capstone.service.CartService;
@@ -21,6 +26,9 @@ public class CustomerController {
 	
 	@Autowired
 	CartService cs;
+	
+	@Autowired
+	OrderDAO orderDao;
 
 	@GetMapping("/songs")
 	public ModelAndView showSongs(ModelMap model,@Param("keyword") String keyword) {
@@ -61,4 +69,16 @@ public class CustomerController {
 		cs.removeAll();
 		return new ModelAndView("redirect:/songs");
 	}	
+	
+	@GetMapping("/checkout")
+	public ModelAndView showCheckout() {
+		double total=cs.getSongs().stream()
+				.map(s->s.getPrice())
+				.reduce(0.0 , (sum,price)->sum+price);		
+		return new ModelAndView("checkout").addObject("total",total);
+	}
+	
+	
+	
+	
 }
