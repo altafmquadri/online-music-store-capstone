@@ -115,12 +115,17 @@ public class CustomerController {
 		o.setMailingAddress(ma);
 		
 		
+		Order o1 = orderDao.save(o);
+		
+		System.out.println("first msg b4 for loop");
 		for(Song s: cs.getSongs()) {
-			s.setOrder(o);
-			o.getOrderedSongs().add(s);
+			System.out.println("b4 add to o1");
+			o1.getOrderedSongs().add(s);
+			System.out.println("b4 save");
+			songDao.save(s);
+			System.out.println("after save");
 		}
-		orderDao.save(o);
-
+		System.out.println("after loop");
 		cs.removeAll();
 		return new ModelAndView("success");		
 	}
