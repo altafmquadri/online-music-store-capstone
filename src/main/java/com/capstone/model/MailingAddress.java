@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
@@ -12,14 +11,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
-public class Account {
+public class MailingAddress {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private int creditCardNumber;
+	private String street;
+	private String city;
+	private String state;
+	private int zipcode;
 	@OneToOne
-	@JoinColumn(name = "customer_id")
-	private Customer customer;
+	private Order order;
+
 }
