@@ -11,6 +11,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.capstone.dao.AdminDAO;
+import com.capstone.exceptions.IncorrectLoginException;
 import com.capstone.service.Authentication;
 
 @RestController
@@ -29,13 +30,20 @@ public class LoginController {
 	
 	@PostMapping("admin/login")
 	public ModelAndView verifyLogin(@RequestParam("name") String name,@RequestParam("password") String password,ModelMap model) {
-		boolean isValidLogin = auth.authenticate(name, password, adminDao);
-		if (isValidLogin) {
-			model.put("admin", auth.getAdmin());
-			return new ModelAndView( "redirect:/admin/songs");
+		String message = null;
+		boolean isValid = auth.authenticate(name, password, adminDao);			
+		try {			
+			if(isValid) {
+				model.put("admin", auth.getAdmin());	
+				return new ModelAndView("redirect:/admin/songs");
+			}else  {
+				throw new IncorrectLoginException("The credentials are incorrect");
+			}
+		}catch (IncorrectLoginException e) {	
+			message = e.getMessage();			
 		}
-		return new ModelAndView("");
-	}
+		return new ModelAndView("adminlogin").addObject("message", message);
+	}		
 	
 	@GetMapping("/admin/logout")
 	public ModelAndView logout(SessionStatus status) {

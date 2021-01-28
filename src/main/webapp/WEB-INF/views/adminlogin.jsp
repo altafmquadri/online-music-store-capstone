@@ -23,6 +23,9 @@
 				<input type="submit" value="Submit">
 			</div>
 		</form>
+		<div>
+			<h3>${message}</h3>
+		</div>
 	</div>
 </body>
 </html>

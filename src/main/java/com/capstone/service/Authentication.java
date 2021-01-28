@@ -23,24 +23,25 @@ public class Authentication {
 	private Customer customer = null;
 
 	public boolean authenticate(String userName, String password, AdminDAO dao) {
-		boolean isValid = false;
 		if (!(dao instanceof AdminDAO))
 			return false;
-
-		Admin admin = adminDao.findOneByUsernameAndPassword(userName, password).get();
-		setAdmin(admin);
-		isValid = true;
-		return isValid;
+		Admin admin = adminDao.findOneByUsernameAndPassword(userName, password).orElse(null);
+		if (admin != null) {
+			setAdmin(admin);
+			return true;
+		}
+		return false;
 	}
 
-	public boolean authenticate(String userName, String password, CustomerDAO dao) {
-		boolean isValid = false;
+	public boolean authenticate(String userName, String password, CustomerDAO dao) {		
 		if (!(dao instanceof CustomerDAO))
 			return false;
-		Customer customer = customerDao.findOneByUsernameAndPassword(userName, password).get();
-		setCustomer(customer);
-		isValid = true;
-		return isValid;
+		Customer customer = customerDao.findOneByUsernameAndPassword(userName, password).orElse(null);
+		if (customer != null) {
+			setCustomer(customer);			
+			return true;
+		}
+		return false;
 	}
 
 	public void logout() {

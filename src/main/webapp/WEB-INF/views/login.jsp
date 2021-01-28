@@ -22,9 +22,11 @@
 			
 			<div>
 				<input type="submit" value="Login">
-			</div>
-			
+			</div>			
 		</form>
+		<div>
+			<h3>${message}</h3>
+		</div>
 	</div>
 </body>
 </html>

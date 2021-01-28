@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 import com.capstone.dao.CustomerDAO;
+import com.capstone.exceptions.IncorrectLoginException;
 import com.capstone.exceptions.PasswordConfirmationException;
 import com.capstone.exceptions.UniqueException;
 import com.capstone.model.Customer;
@@ -75,14 +76,20 @@ public class CustomerLoginController {
 	}
 
 	@PostMapping("/login")
-	public ModelAndView login(@RequestParam("name") String name,@RequestParam("password") String password, ModelMap model ){
-		
-		boolean isValid = auth.authenticate(name, password, custDao);
-		if(isValid) {
-			model.put("customer", auth.getCustomer());
-			return new ModelAndView("redirect:/songs");
+	public ModelAndView login(@RequestParam("name") String name,@RequestParam("password") String password, ModelMap model ){		
+		String message = null;
+		boolean isValid = auth.authenticate(name, password, custDao);			
+		try {			
+			if(isValid) {
+				model.put("customer", auth.getCustomer());	
+				return new ModelAndView("redirect:/songs");
+			}else  {
+				throw new IncorrectLoginException("The credentials are incorrect");
+			}
+		}catch (IncorrectLoginException e) {			
+			message = e.getMessage();			
 		}
-		return new ModelAndView("login");
+		return new ModelAndView("login").addObject("message", message);		
 	}
 	
 	@GetMapping("/logout")
