@@ -74,7 +74,7 @@
 					</tr>
 			</table>
 			<div>
-				<a href="#">Place Order</a>
+				<a href="/mailing">Place Order</a>
 			</div>		
 		</div>
 		

@@ -1,4 +1,5 @@
 package com.capstone.customercontrollers;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -8,12 +9,19 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.capstone.dao.CustomerDAO;
+import com.capstone.dao.MailingDAO;
 import com.capstone.dao.OrderDAO;
 import com.capstone.dao.SongDAO;
+import com.capstone.model.Customer;
+import com.capstone.model.MailingAddress;
+import com.capstone.model.Order;
 import com.capstone.model.Song;
 import com.capstone.service.CartService;
 
@@ -29,6 +37,12 @@ public class CustomerController {
 	
 	@Autowired
 	OrderDAO orderDao;
+	
+	@Autowired
+	MailingDAO md;
+	
+	@Autowired
+	CustomerDAO custDao;
 
 	@GetMapping("/songs")
 	public ModelAndView showSongs(ModelMap model,@Param("keyword") String keyword) {
@@ -77,6 +91,40 @@ public class CustomerController {
 				.reduce(0.0 , (sum,price)->sum+price);		
 		return new ModelAndView("checkout").addObject("total",total);
 	}
+	
+	@GetMapping("/mailing")
+	public ModelAndView showMailingAddress() {
+		return new ModelAndView("mailing");
+	}
+	
+	@PostMapping("/mailing")
+	public ModelAndView saveMailingAddress(@RequestParam("street") String street,
+			@RequestParam("city") String city,
+			@RequestParam("state") String state,
+			@RequestParam("zip") int zip,
+			ModelMap model) {
+		Customer c=(Customer) model.get("customer");
+		MailingAddress ma=new MailingAddress();
+		ma.setStreet(street);
+		ma.setCity(city);
+		ma.setState(state);
+		ma.setZipcode(zip);
+		Order o=new Order();
+		o.setOrderedSongs(cs.getSongs());
+		o.setStatus("ordered");
+		o.setDate(new Date());
+		c.getOrders().add(o);		
+		o.setCustomer(c);
+		custDao.save(c);
+		o.setMailingAddress(ma);
+		ma.setOrder(o);
+		orderDao.save(o);
+		md.save(ma);
+		cs.removeAll();
+		return new ModelAndView("success");		
+	}
+	
+	
 	
 	
 	
