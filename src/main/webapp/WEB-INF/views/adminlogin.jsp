@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<div>
+		<nav><a href="/login">Customer Login</a></nav>
+	</div>
 	<h1>Admin Login</h1>
 	<div>
 		<form method="post">

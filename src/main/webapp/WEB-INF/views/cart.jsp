@@ -18,18 +18,16 @@
 			response.sendRedirect("/login");
 		}
 	%>
-
-	<a href="/logout">Logout</a>
+	
 	
 	<div>
 		<div>
-			<nav>Welcome ${customer.getId()}</nav>
+			<h3>Welcome ${customer.getUsername()}</h3>
 		</div>
+	
 		<div>
-			<nav><a href="#">Proceed to Checkout</a></nav>
+			<nav><a href="/logout">Logout</a></nav>
 		</div>
-		
-		
 	</div>
 	<div>
 		<h1>Cart</h1>
@@ -76,6 +74,9 @@
 				}
 				%>
 			</table>
+			<div>
+				<a href="#">Proceed to Checkout</a>
+			</div>		
 		</div>
 		
 	</div>

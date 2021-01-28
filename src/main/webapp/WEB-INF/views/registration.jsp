@@ -8,8 +8,12 @@
 </head>
 <body>
 	<div>
-
-		<nav>Customer Registration</nav>
+	<div>
+		<nav>
+			<a href="/login">Login</a>
+		</nav>
+	</div>
+		<h1>Customer Registration</h1>
 		<form method="post" >
 			<div>
 				<label>Username:</label> 
