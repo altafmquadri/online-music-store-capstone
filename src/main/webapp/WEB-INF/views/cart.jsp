@@ -75,7 +75,16 @@
 				%>
 			</table>
 			<div>
-				<a href="/checkout">Proceed to Checkout</a>
+				<%	@SuppressWarnings("unchecked")
+					List<Song> songs=(List<Song>)session.getAttribute("cart");
+					if(songs.size()>0){
+				%>		
+						<a href="/checkout">Proceed to Checkout</a>
+				<%		
+					}
+				%>
+				
+				
 			</div>		
 		</div>
 		

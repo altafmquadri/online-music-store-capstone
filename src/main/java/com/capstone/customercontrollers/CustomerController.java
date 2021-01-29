@@ -26,7 +26,7 @@ import com.capstone.model.Song;
 import com.capstone.service.CartService;
 
 @RestController
-@SessionAttributes({"customer", "songs", "cart", "order"})
+@SessionAttributes({"customer", "songs", "cart", "order","orders"})
 @Transactional
 public class CustomerController {
 
@@ -141,6 +141,14 @@ public class CustomerController {
 	@GetMapping("/success")
 	public ModelAndView showSuccess(){
 		return new ModelAndView("success");
+	}
+	
+	@GetMapping("pastorders")
+	public ModelAndView showOrders(ModelMap model) {
+		Customer c=(Customer) model.get("customer");
+		List<Order> orders = orderDao.findAllOrdersByCustomerId(c.getId());
+		model.put("orders", orders);		
+		return new ModelAndView("pastorders");
 	}
 	
 }

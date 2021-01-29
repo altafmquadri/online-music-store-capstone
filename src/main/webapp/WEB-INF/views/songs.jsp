@@ -25,6 +25,9 @@
 			<nav><a href="/cart">Cart</a> <span>${cart.size()}</span></nav>
 		</div>
 		<div>
+			<nav><a href="/pastorders">Your Orders</a></nav>
+		</div>
+		<div>
 			<nav><a href="/logout">Logout</a></nav>
 		</div>
 	</div>
