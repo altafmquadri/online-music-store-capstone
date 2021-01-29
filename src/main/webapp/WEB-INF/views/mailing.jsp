@@ -7,11 +7,23 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<div>
-	<div>
-		<nav>
-			<a href="/logout">Logout</a>
-		</nav>
+		<div>
+			<nav> Hello, ${customer.getUsername()}</nav>
+		</div>
+		<div>
+			<nav><a href="/songs">Home</a></nav>
+		</div>
+		<div>
+			<nav><a href="/cart">Cart</a> <span>${cart.size()}</span></nav>
+		</div>		
+		<div>
+			<nav><a href="/pastorders">Your Orders</a></nav>
+		</div>		
+		<div>
+			<nav><a href="/logout">Logout</a></nav>
+		</div>
 	</div>
 		<h1> Add Mailing Address</h1>
 		<form method="post" >
@@ -41,7 +53,6 @@
 			
 		</form>
 		
-	</div>
 
 </body>
 </html>

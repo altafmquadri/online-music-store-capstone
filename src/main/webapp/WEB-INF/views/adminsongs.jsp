@@ -36,6 +36,7 @@
 				<div>
 					<label>Song Image</label> 
 					<input type="text" name="imageUrl" required="required">
+					<div>${message}</div>
 				</div>
 				<div>
 					<label>Song Title</label> 
@@ -55,11 +56,18 @@
 				</div>
 				<div>
 					<label>Format</label> 
-					<input type="text" name="format" required="required">
+					<select required="required" name="format">
+						<option value="AIFF">AIFF</option>
+						<option value="MP3">MP3</option>
+						<option value="MP4">MP4</option>
+						<option value="OGG">OGG</option>
+						<option value="WAV">WAV</option>
+						<option value="WMA">WMA</option>
+					</select>
 				</div>
 				<div>
 					<label>Price</label> 
-					<input type="text" name="price" required="required">
+					<input type="text" pattern=^[0-9]{1,10}(\.[0-9]{1,2})?$ title="Number upto 10 digits and 2 decimal places" name="price" required="required">
 				</div>
 				<div>
 					<input type='submit' value="Add Song" >

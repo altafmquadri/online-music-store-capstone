@@ -21,7 +21,7 @@
 	%>
 	<div>
 		<div>
-			<nav>Hi, ${customer.getUsername()}</nav>
+			<nav> Hello, ${customer.getUsername()}</nav>
 		</div>
 		<div>
 			<nav><a href="/songs">Home</a></nav>
@@ -38,13 +38,14 @@
 	</div>
 	<div>		
 		<div>
+		<h1>Your Order History</h1>
 		<%
 			@SuppressWarnings("unchecked")
 			List<Order> orders = (List<Order>) session.getAttribute("orders");
 			for(Order o : orders){		
 		%>
-			<br><br>
-			<table border='1' style="width: 40%">
+			
+			<table border='1' style="width: 40%;margin-bottom:25px">
 				<tr>
 					<th colspan="6">Order No: <span><%=o.getId()%></span> Date: <span><%=o.getDate().toString().substring(0,9)%></span> </th>					
 				</tr>
@@ -70,11 +71,13 @@
 					<td><%=i.getFormat()%></td>
 					<td><%=i.getPrice()%></td>						
 				</tr>
+					
 				<%
 				}}					
 				%>
 				
 			</table>
+		
 		</div>
 	</div>
 </body>

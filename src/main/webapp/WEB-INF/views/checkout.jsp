@@ -19,15 +19,20 @@
 		}
 	%>
 	
-<div>
+
 	<div>
 		<div>
-			<h3>Welcome ${customer.getUsername()}</h3>
+			<nav> Hello, ${customer.getUsername()}</nav>
 		</div>
-	
 		<div>
 			<nav><a href="/songs">Home</a></nav>
 		</div>
+		<div>
+			<nav><a href="/cart">Cart</a> <span>${cart.size()}</span></nav>
+		</div>		
+		<div>
+			<nav><a href="/pastorders">Your Orders</a></nav>
+		</div>		
 		<div>
 			<nav><a href="/logout">Logout</a></nav>
 		</div>
@@ -78,6 +83,6 @@
 			</div>		
 		</div>
 		
-	</div>
+	
 </body>
 </html>
