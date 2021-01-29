@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+
 import com.capstone.dao.CustomerDAO;
-//import com.capstone.dao.MailingDAO;
 import com.capstone.dao.OrderDAO;
 import com.capstone.dao.SongDAO;
 import com.capstone.model.Customer;
@@ -114,10 +114,8 @@ public class CustomerController {
 		c.getOrders().add(o);		
 		o.setCustomer(c);
 		o.setMailingAddress(ma);
-		System.out.println("first msg b4 for loop");
+
 		for(Song s: cs.getSongs()) {
-			System.out.println("b4 add to o1");
-			
 			Item i=new Item();
 			i.setArtist(s.getArtist());
 			i.setDescription(s.getDescription());
@@ -128,13 +126,8 @@ public class CustomerController {
 			i.setPrice(s.getPrice());
 			i.setOrder(o);
 			o.getItems().add(i);
-			
-			System.out.println("b4 save");
-			//songDao.save(s);
-			System.out.println("after save");
 		}
-		Order o1 = orderDao.save(o);
-		System.out.println("after loop");
+		orderDao.save(o);
 		cs.removeAll();
 		return new ModelAndView("success");		
 	}
