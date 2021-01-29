@@ -26,7 +26,7 @@ import com.capstone.model.Song;
 import com.capstone.service.CartService;
 
 @RestController
-@SessionAttributes({"customer", "songs", "cart"})
+@SessionAttributes({"customer", "songs", "cart", "order"})
 @Transactional
 public class CustomerController {
 
@@ -127,8 +127,24 @@ public class CustomerController {
 			i.setOrder(o);
 			o.getItems().add(i);
 		}
-		orderDao.save(o);
+		Order order = orderDao.save(o);
+		model.put("order", order);
 		cs.removeAll();
-		return new ModelAndView("success");		
+		double total= order.getItems().stream()
+				.map(i->i.getPrice())
+				.reduce(0.0 , (sum,price)->sum+price);	
+		
+		
+		return new ModelAndView("success").addObject("total", total);		
 	}
+	
+	@GetMapping("/success")
+	public ModelAndView showSuccess(){
+		return new ModelAndView("success");
+	}
+	
 }
+
+
+
+
