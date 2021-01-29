@@ -19,6 +19,7 @@ import com.capstone.dao.CustomerDAO;
 import com.capstone.dao.OrderDAO;
 import com.capstone.dao.SongDAO;
 import com.capstone.model.Customer;
+import com.capstone.model.Item;
 import com.capstone.model.MailingAddress;
 import com.capstone.model.Order;
 import com.capstone.model.Song;
@@ -41,7 +42,7 @@ public class CustomerController {
 	@Autowired
 	CustomerDAO custDao;
 
-	@GetMapping("/songs")
+	@GetMapping("/songs")	
 	public ModelAndView showSongs(ModelMap model,@Param("keyword") String keyword) {
 		if(keyword==null) {
 			List<Song> songs = (List<Song>) songDao.findAll();
@@ -113,18 +114,26 @@ public class CustomerController {
 		c.getOrders().add(o);		
 		o.setCustomer(c);
 		o.setMailingAddress(ma);
-		
-		
-		Order o1 = orderDao.save(o);
-		
 		System.out.println("first msg b4 for loop");
 		for(Song s: cs.getSongs()) {
 			System.out.println("b4 add to o1");
-			o1.getOrderedSongs().add(s);
+			
+			Item i=new Item();
+			i.setArtist(s.getArtist());
+			i.setDescription(s.getDescription());
+			i.setFormat(s.getFormat());
+			i.setGenre(s.getGenre());
+			i.setImageUrl(s.getImageUrl());
+			i.setTitle(s.getTitle());
+			i.setPrice(s.getPrice());
+			i.setOrder(o);
+			o.getItems().add(i);
+			
 			System.out.println("b4 save");
-			songDao.save(s);
+			//songDao.save(s);
 			System.out.println("after save");
 		}
+		Order o1 = orderDao.save(o);
 		System.out.println("after loop");
 		cs.removeAll();
 		return new ModelAndView("success");		
