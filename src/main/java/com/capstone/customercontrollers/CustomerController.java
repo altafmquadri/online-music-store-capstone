@@ -135,7 +135,7 @@ public class CustomerController {
 				.reduce(0.0 , (sum,price)->sum+price);	
 		
 		
-		return new ModelAndView("success").addObject("total", total);		
+		return new ModelAndView("success").addObject("total", total).addObject("orderid",order.getId()).addObject("address", order.getMailingAddress());		
 	}
 	
 	@GetMapping("/success")

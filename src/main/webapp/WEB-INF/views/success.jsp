@@ -34,41 +34,59 @@
 		</div>
 	</div>
 	<div>
+	
+	
+		
 		<div>
 			<table border='1' style="width: 40%">
-				<tr><th colspan="6">Order Number:</th></tr>
+				<tr>
+					<th colspan="6">Order Number:${orderid}</th>					
+				</tr>
 				<tr>
 					<th>Title</th>
 					<th>Description</th>
 					<th>Artist</th>
 					<th>Genre</th>
 					<th>Format</th>
-					<th>Price</th>
-					<th colspan="6">Your Total:</th>
-				</tr>
-
-				<%
-					Order order = (Order)session.getAttribute("order");
-					List<Item> items = (List<Item>) order.getItems();
-				
-				%>
-				<%
-					for (Item i : items) {
-				%>
-				
-				<tr style="text-align: center">
-					<td><%=i.getId()%></td>
+					<th>Price</th>					
+				</tr>		
+		<%
+			Order order = (Order)session.getAttribute("order");
+			List<Item> items = (List<Item>) order.getItems();				
+		%>
+		<%
+			for (Item i : items) {
+		%>			
+				<tr style="text-align: center">					
 					<td><%=i.getTitle()%></td>
 					<td><%=i.getDescription()%></td>
 					<td><%=i.getArtist()%></td>
 					<td><%=i.getGenre()%></td>
 					<td><%=i.getFormat()%></td>
-					<td><%=i.getPrice()%></td>
-					<td>${total}</td>	
+					<td><%=i.getPrice()%></td>						
 				</tr>
 				<%
 				}
 				%>
+				<tr>
+					<td colspan="5">Total</td>	
+					<td>${total}</td>
+				</tr>
+				<tr>
+					<th colspan="6">Mailing Address:</th>									
+				</tr>	
+				<tr>
+					<th colspan="3">Street</th>
+					<th colspan="1.5">City</th>
+					<th colspan="1.5">State</th>
+					<th colspan="1.5">Zipcode</th>
+				</tr>	
+				<tr style="text-align: center">
+					<td colspan="3">${address.getStreet()}</td>
+					<td colspan="1.5">${address.getCity()}</td>
+					<td colspan="1.5">${address.getState()}</td>
+					<td colspan="1.5">${address.getZip()}</td>				
+				</tr>
 			</table>
 		</div>
 	</div>
