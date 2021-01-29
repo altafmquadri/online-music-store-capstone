@@ -1,6 +1,8 @@
 package com.capstone.admincontrollers;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,15 +12,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.capstone.dao.CustomerDAO;
 import com.capstone.dao.SongDAO;
+import com.capstone.model.Customer;
 import com.capstone.model.Song;
 
 @RestController
-@SessionAttributes({ "admin", "songs" })
+@SessionAttributes({ "admin", "songs","users" })
 public class AdminSongsController {
 
 	@Autowired
 	SongDAO songDao;
+	
+	@Autowired
+	CustomerDAO custDao;
 
 	@GetMapping("admin/songs")
 	public ModelAndView showPage(ModelMap model) {
@@ -72,5 +80,11 @@ public class AdminSongsController {
 	public ModelAndView deleteSong(@PathVariable("id") int id) {
 		songDao.deleteById(id);
 		return new ModelAndView("redirect:/admin/songs");
+	}
+	
+	@GetMapping("admin/viewusers")
+	public ModelAndView showUsers(ModelMap model) {
+		model.put("users",(List<Customer>) custDao.findAll());
+		return new ModelAndView("viewusers");
 	}
 }

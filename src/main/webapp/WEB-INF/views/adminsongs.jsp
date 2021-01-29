@@ -22,6 +22,9 @@
 			<nav>Welcome ${admin.getUsername()}</nav>
 		</div>
 		<div>
+			<nav><a href="/admin/viewusers">All Customers</a></nav>
+		</div>
+		<div>
 			<nav><a href="/admin/logout">Logout</a></nav>
 		</div>
 	</div>
