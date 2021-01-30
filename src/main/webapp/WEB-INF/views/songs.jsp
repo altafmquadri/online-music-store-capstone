@@ -13,6 +13,9 @@
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"></script>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+
+
 
 <title>Song Page</title>
 </head>
@@ -31,10 +34,10 @@
 			<nav class="navbar-brand"> Hello, ${customer.getUsername()}</nav>
 		</div>
 		<div>
-			<nav><a class="navbar-brand" href="/songs">Home</a></nav>
+			<nav><a class="navbar-brand" href="/songs"><i style="color:white" class="fas fa-home fa-2x"></i> </a></nav>
 		</div>
 		<div>
-			<nav><a class="navbar-brand" href="/cart">Cart</a> <span>${cart.size()}</span></nav>
+			<nav><a class="navbar-brand" href="/cart"><i style="color:white" class="fas fa-shopping-cart fa-2x"></i></a><span style="margin: -35px;margin-top:-50px" class="badge bg-danger">${cart.size()}</span></nav>
 		</div>		
 		<div>
 			<nav><a class="navbar-brand" href="/pastorders">Your Orders</a></nav>
