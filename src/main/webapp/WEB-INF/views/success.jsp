@@ -45,14 +45,14 @@
 			<div>
 				<nav><a class="navbar-brand btn btn-danger" href="/logout">Logout</a></nav>
 			</div>
-	</div>
-	</div>
+		</div>
+		</div>
 	
 	<div style="height: 20px"></div>
 		
 		<div>
 			<table class="table table-light table-striped table-bordered table-sm" border='1' style="width: 100%;text-align:center;">
-				<tr class="table-info">
+				<tr class="table-warning">
 					<th colspan="6">Order Number:${orderid}</th>					
 				</tr>
 				<tr class="table-dark">
