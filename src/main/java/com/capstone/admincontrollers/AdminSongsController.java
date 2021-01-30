@@ -57,6 +57,23 @@ public class AdminSongsController {
 		Song song = songDao.findById(id).get();
 		return new ModelAndView("editsong").addObject(song);
 	}
+	@PostMapping("admin/songs/editsong/{id}")
+	public ModelAndView editSong(@PathVariable("id") int id, @RequestParam("title") String title,
+			@RequestParam("description") String description, @RequestParam("artist") String artist,
+			@RequestParam("genre") String genre, @RequestParam("format") String format,
+			@RequestParam("price") double price,@RequestParam("imageUrl") String imageUrl) {
+
+		Song song = songDao.findById(id).get();
+		song.setImageUrl(imageUrl);
+		song.setTitle(title);
+		song.setDescription(description);
+		song.setArtist(artist);
+		song.setGenre(genre);
+		song.setFormat(format);
+		song.setPrice(price);
+		songDao.save(song);
+		return new ModelAndView("redirect:/admin/songs");
+	}
 
 	@GetMapping("admin/songs/deletesong/{id}")
 	public ModelAndView deleteSong(@PathVariable("id") int id) {
