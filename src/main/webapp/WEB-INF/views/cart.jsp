@@ -41,10 +41,10 @@
 			<nav><a class="navbar-brand" href="/cart"><i style="color:white" class="fas fa-shopping-cart fa-2x"></i></a><span style="margin: -35px;margin-top:-50px" class="badge bg-danger">${cart.size()}</span></nav>
 		</div>		
 		<div>
-			<nav><a class="navbar-brand" href="/pastorders">Your Orders</a></nav>
+			<nav><a class="navbar-brand" href="/pastorders"><span><i class="fas fa-file-invoice fa-2x"></i></span></a></nav>
 		</div>		
 		<div>
-			<nav><a class="navbar-brand btn btn-danger" href="/logout">Logout</a></nav>
+			<nav><a class="navbar-brand" href="/logout"><span><i class="fas fa-sign-out-alt fa-2x"></i></span></a></nav>
 		</div>
 	</div>
 	</div>

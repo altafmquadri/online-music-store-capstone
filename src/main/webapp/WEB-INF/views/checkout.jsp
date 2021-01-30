@@ -14,6 +14,7 @@
         crossorigin="anonymous"></script>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -40,12 +41,12 @@
 			<div>
 				<nav><a class="navbar-brand" href="/cart"><i style="color:white" class="fas fa-shopping-cart fa-2x"></i></a><span style="margin: -35px;margin-top:-50px" class="badge bg-danger">${cart.size()}</span></nav>
 			</div>		
+				<div>
+			<nav><a class="navbar-brand" href="/pastorders"><span><i class="fas fa-file-invoice fa-2x"></i></span></a></nav>
+		</div>		
 			<div>
-				<nav><a class="navbar-brand" href="/pastorders">Your Orders</a></nav>
-			</div>		
-			<div>
-				<nav><a class="navbar-brand btn btn-danger" href="/logout">Logout</a></nav>
-			</div>
+			<nav><a class="navbar-brand" href="/logout"><span><i class="fas fa-sign-out-alt fa-2x"></i></span></a></nav>
+		</div>
 		</div>
 		</div>
 		<div style="height: 20px"></div>

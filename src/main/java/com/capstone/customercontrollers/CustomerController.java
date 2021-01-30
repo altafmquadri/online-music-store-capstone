@@ -143,7 +143,7 @@ public class CustomerController {
 		return new ModelAndView("success");
 	}
 	
-	@GetMapping("pastorders")
+	@GetMapping("/pastorders")
 	public ModelAndView showOrders(ModelMap model) {
 		Customer c=(Customer) model.get("customer");
 		List<Order> orders = orderDao.findAllOrdersByCustomerId(c.getId());
