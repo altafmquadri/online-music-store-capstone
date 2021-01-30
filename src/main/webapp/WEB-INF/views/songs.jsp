@@ -6,6 +6,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+       integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
 <meta charset="UTF-8">
 
 <title>Song Page</title>
@@ -17,39 +23,47 @@
 			response.sendRedirect("/login");
 		}
 	%>
-	<div>
-		<div>
-			<nav> Hello, ${customer.getUsername()}</nav>
+	<div style="height: 10px;"></div>
+	<div class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid">
+			<nav class="navbar-brand"> Hello, ${customer.getUsername()}</nav>
 		</div>
 		<div>
-			<nav><a href="/songs">Home</a></nav>
+			<nav class="navbar-brand"><a href="/songs">Home</a></nav>
 		</div>
 		<div>
-			<nav><a href="/cart">Cart</a> <span>${cart.size()}</span></nav>
+			<nav class="navbar-brand"><a href="/cart">Cart</a> <span>${cart.size()}</span></nav>
 		</div>		
 		<div>
-			<nav><a href="/pastorders">Your Orders</a></nav>
+			<nav class="navbar-brand"><a href="/pastorders">Your Orders</a></nav>
 		</div>		
 		<div>
-			<nav><a href="/logout">Logout</a></nav>
+			<nav class="navbar-brand"><a href="/logout">Logout</a></nav>
 		</div>
 	</div>
 	<div>
 		<h1>Songs</h1>
-		<div>
+		<div class="mb-3">
 			<form >
 				<div>
+				 
 					<label>Filter:</label> 
+					<div class="input-group">
+					<span class="input-group-addon">
+                             <i class="glyphicon glyphicon-user"></i>
+                        </span>
 					<input type="text" name="keyword">
+					<div/>
 					<input type="submit" name="Search">
-					<a href="/songs">Clear</a>
+					<a class="btn btn-warning" href="/songs">Clear</a>
 				</div>
 			</form>
 		</div>
+		
 
 		<div>
-			<table border='1' style="width: 40%">
-				<tr>
+			<table class="table table-light table-striped table-bordered table-sm" border='1' style="width: 100%;text-align:center;">
+				<tr class="table-dark">
 					<th>Image</th>
 					<th>Title</th>
 					<th>Description</th>
@@ -67,7 +81,7 @@
 				<%
 					for (Song s : songs) {
 				%>
-				<tr style="text-align: center">
+				<tr class="table align-middle" style="text-align: center">
 					<td><img style="width: 75px; height: 75px"
 						src="<%=s.getImageUrl()%>" alt="song image" /></td>
 					<td><%=s.getTitle()%></td>
@@ -76,7 +90,7 @@
 					<td><%=s.getGenre()%></td>
 					<td><%=s.getFormat()%></td>
 					<td><%=s.getPrice()%></td>
-					<td><a href="/addtocart/<%=s.getId()%>">Add To Cart</a></td>
+					<td><a class="btn btn-info" href="/addtocart/<%=s.getId()%>">Add To Cart</a></td>
 				</tr>
 				<%
 				}

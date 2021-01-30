@@ -6,6 +6,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+	crossorigin="anonymous"></script>
 <meta charset="UTF-8">
 <title>Admin Song Page</title>
 </head>
@@ -76,8 +85,8 @@
 		</div>
 
 		<div>
-			<table border='1' style="width: 40%">
-				<tr>
+			<table  class="table table-light table-striped table-bordered table-sm" border='1' style="width: 100%; text-align:center;">
+				<tr class="table-dark">
 					<th>Image</th>
 					<th>Title</th>
 					<th>Description</th>
@@ -94,7 +103,7 @@
 				<%
 					for (Song s : songs) {
 				%>
-				<tr style="text-align: center">
+				<tr class="table align-middle" style="text-align: center">
 					<td> <img style="width: 75px; height:75px" src="<%=s.getImageUrl()%>" alt="song image"/></td>
 					<td><%=s.getTitle()%></td>
 					<td><%=s.getDescription()%></td>
@@ -102,14 +111,16 @@
 					<td><%=s.getGenre()%></td>
 					<td><%=s.getFormat()%></td>
 					<td><%=s.getPrice()%></td>
-					<td><a href="/admin/songs/editsong/<%=s.getId()%>">Edit</a></td>
-					<td><a href="/admin/songs/deletesong/<%=s.getId()%>">Delete</a></td>
+					<td><a class="btn btn-warning" href="/admin/songs/editsong/<%=s.getId()%>">Edit</a></td>
+					<td><a class="btn btn-danger" href="/admin/songs/deletesong/<%=s.getId()%>">Delete</a></td>
 				</tr>
 				<%
 					}
 				%>
 			</table>
 		</div>
+		
+		
 	</div>
 </body>
 </html>
