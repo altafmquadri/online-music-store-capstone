@@ -18,12 +18,12 @@ import com.capstone.model.Customer;
 import com.capstone.model.Song;
 
 @RestController
-@SessionAttributes({ "admin", "songs","users" })
+@SessionAttributes({ "admin", "songs", "users" })
 public class AdminSongsController {
 
 	@Autowired
 	SongDAO songDao;
-	
+
 	@Autowired
 	CustomerDAO custDao;
 
@@ -35,13 +35,12 @@ public class AdminSongsController {
 		return new ModelAndView("adminsongs");
 	}
 
-	@PostMapping("admin/songs/editsong/{id}")
-	public ModelAndView editSong(@PathVariable("id") int id, @RequestParam("title") String title,
-			@RequestParam("description") String description, @RequestParam("artist") String artist,
-			@RequestParam("genre") String genre, @RequestParam("format") String format,
-			@RequestParam("price") double price,@RequestParam("imageUrl") String imageUrl) {
-
-		Song song = songDao.findById(id).get();
+	@PostMapping("admin/songs")
+	public ModelAndView addSong(@RequestParam("title") String title, @RequestParam("description") String description,
+			@RequestParam("artist") String artist, @RequestParam("genre") String genre,
+			@RequestParam("format") String format, @RequestParam("price") double price,
+			@RequestParam("imageUrl") String imageUrl) {
+		Song song = new Song();
 		song.setImageUrl(imageUrl);
 		song.setTitle(title);
 		song.setDescription(description);
@@ -59,18 +58,15 @@ public class AdminSongsController {
 		return new ModelAndView("editsong").addObject(song);
 	}
 
-	
-	
-	
 	@GetMapping("admin/songs/deletesong/{id}")
 	public ModelAndView deleteSong(@PathVariable("id") int id) {
 		songDao.deleteById(id);
 		return new ModelAndView("redirect:/admin/songs");
 	}
-	
+
 	@GetMapping("admin/viewusers")
 	public ModelAndView showUsers(ModelMap model) {
-		model.put("users",(List<Customer>) custDao.findAll());
+		model.put("users", (List<Customer>) custDao.findAll());
 		return new ModelAndView("viewusers");
 	}
 }
