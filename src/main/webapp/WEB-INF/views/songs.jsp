@@ -47,6 +47,7 @@
 		</div>
 	</div>
 	</div>
+	  <div style="height: 20px"></div>
 	<div>
 		<h1>Songs</h1>
 		<div class="mb-3">
@@ -95,7 +96,7 @@
 					<td><%=s.getArtist()%></td>
 					<td><%=s.getGenre()%></td>
 					<td><%=s.getFormat()%></td>
-					<td><%=s.getPrice()%></td>
+					<td>$<%=s.getPrice()%></td>
 					<td><a class="btn btn-info" href="/addtocart/<%=s.getId()%>">Add To Cart</a></td>
 				</tr>
 				<%
