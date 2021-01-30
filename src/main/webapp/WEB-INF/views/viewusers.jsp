@@ -43,7 +43,7 @@
 		</div>
 		<div>
 			<nav>
-				<a href="/logout">Logout</a>
+				<a href="/admin/logout">Logout</a>
 			</nav>
 		</div>
 	</div>

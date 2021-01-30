@@ -17,6 +17,7 @@
 <title>Song Page</title>
 </head>
 <body>
+<div class="container">
 	<%
 		Customer c = (Customer) session.getAttribute("customer");
 		if (c == null) {
@@ -25,21 +26,23 @@
 	%>
 	<div style="height: 10px;"></div>
 	<div class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<div class="container-fluid">
+	<div class="container-fluid" >
+		<div >
 			<nav class="navbar-brand"> Hello, ${customer.getUsername()}</nav>
 		</div>
 		<div>
-			<nav class="navbar-brand"><a href="/songs">Home</a></nav>
+			<nav><a class="navbar-brand" href="/songs">Home</a></nav>
 		</div>
 		<div>
-			<nav class="navbar-brand"><a href="/cart">Cart</a> <span>${cart.size()}</span></nav>
+			<nav><a class="navbar-brand" href="/cart">Cart</a> <span>${cart.size()}</span></nav>
 		</div>		
 		<div>
-			<nav class="navbar-brand"><a href="/pastorders">Your Orders</a></nav>
+			<nav><a class="navbar-brand" href="/pastorders">Your Orders</a></nav>
 		</div>		
 		<div>
-			<nav class="navbar-brand"><a href="/logout">Logout</a></nav>
+			<nav><a class="navbar-brand btn btn-danger" href="/logout">Logout</a></nav>
 		</div>
+	</div>
 	</div>
 	<div>
 		<h1>Songs</h1>
@@ -48,13 +51,13 @@
 				<div>
 				 
 					<label>Filter:</label> 
-					<div class="input-group">
+					
 					<span class="input-group-addon">
                              <i class="glyphicon glyphicon-user"></i>
                         </span>
 					<input type="text" name="keyword">
-					<div/>
-					<input type="submit" name="Search">
+					
+					<input class="btn btn-primary" type="submit" name="Search" value="Search">
 					<a class="btn btn-warning" href="/songs">Clear</a>
 				</div>
 			</form>
@@ -97,6 +100,7 @@
 				%>
 			</table>
 		</div>
+	</div>
 	</div>
 </body>
 </html>
