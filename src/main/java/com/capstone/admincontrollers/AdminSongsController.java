@@ -37,37 +37,6 @@ public class AdminSongsController {
 		return new ModelAndView("adminsongs");
 	}
 
-	@PostMapping("admin/songs")
-	public ModelAndView addSong(@RequestParam("title") String title, @RequestParam("description") String description,
-			@RequestParam("artist") String artist, @RequestParam("genre") String genre,
-			@RequestParam("format") String format, @RequestParam("price") double price,@RequestParam("imageUrl") String imageUrl) {
-		String message = null;
-		try {
-			Song song = new Song();
-			song.setImageUrl(imageUrl);
-			song.setTitle(title);
-			song.setDescription(description);
-			song.setArtist(artist);
-			song.setGenre(genre);
-			song.setFormat(format);
-			song.setPrice(price);
-			if(songDao.save(song) != null) {
-				return new ModelAndView("redirect:/admin/songs");
-			}else {
-				throw new LongLinkException("Image Url is too long!");
-			}
-		}catch(LongLinkException e) {
-			message = e.getMessage();	
-			}
-		return new ModelAndView("redirect:/admin/songs");
-	}
-
-	@GetMapping("admin/songs/editsong/{id}")
-	public ModelAndView showEdit(@PathVariable("id") int id) {
-		Song song = songDao.findById(id).get();
-		return new ModelAndView("editsong").addObject(song);
-	}
-
 	@PostMapping("admin/songs/editsong/{id}")
 	public ModelAndView editSong(@PathVariable("id") int id, @RequestParam("title") String title,
 			@RequestParam("description") String description, @RequestParam("artist") String artist,
@@ -85,6 +54,14 @@ public class AdminSongsController {
 		songDao.save(song);
 		return new ModelAndView("redirect:/admin/songs");
 	}
+
+	@GetMapping("admin/songs/editsong/{id}")
+	public ModelAndView showEdit(@PathVariable("id") int id) {
+		Song song = songDao.findById(id).get();
+		return new ModelAndView("editsong").addObject(song);
+	}
+
+	
 	
 	
 	@GetMapping("admin/songs/deletesong/{id}")
