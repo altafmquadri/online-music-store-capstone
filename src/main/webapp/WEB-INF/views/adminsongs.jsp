@@ -41,9 +41,22 @@
             <div style="height: 20px"></div>
             <div>
                 <h1>Songs</h1>
+                
+                 <p>
+	                <a class="btn btn-info" data-bs-toggle="collapse" href="#collapseOnClick" aria-expanded="false"
+	                    aria-controls="collapseOnClick">
+	                    Show Form
+	                </a>
+           		 </p>
+                
                 <div style="height: 20px"></div>
-                <div class="input-group mb-3">
+                <div class="collapse" id="collapseOnClick" class="input-group mb-3">
+                
                     <form class="form-control" method="post">
+                     	<div class="clearfix" >
+                            <input class="btn btn-primary float-end" type='submit' value="Add Song">
+                        </div>
+                        <div style="height: 5px;"></div>
                         <div class="mb-2">
                             <label class="form-label">Song Image</label>
                             <input class="form-control" type="text" name="imageUrl" required="required">
@@ -82,11 +95,11 @@
                                 title="Number upto 10 digits and 2 decimal places" name="price"
                                 required="required">
                         </div>
-                        <div>
-                            <input class="btn btn-primary" type='submit' value="Add Song">
-                        </div>
+                       
                     </form>
                 </div>
+                
+                <div style="height:25px "></div>
 
 
 		<div>
