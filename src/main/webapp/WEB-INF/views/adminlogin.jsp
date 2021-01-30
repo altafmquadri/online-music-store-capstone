@@ -3,15 +3,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Admin Login</title>
 </head>
 <body>
 	<div>
 		<nav><a href="/login">Customer Login</a></nav>
 	</div>
 	<h1>Admin Login</h1>
-	<div>
+	<div class="ui-form">
 		<form method="post">
 			<div>
 				<label>Username:</label>
@@ -23,7 +24,7 @@
 				 <input type="password" name="password">
 			</div>
 			<div>
-				<input type="submit" value="Submit">
+				<input class="ui inverted pink button" type="submit" value="Submit">
 			</div>
 		</form>
 		<div>
