@@ -61,7 +61,7 @@ public class CustomerController {
 		System.out.println(song);
 		cs.addToCart(song);
 		model.put("cart", cs.getSongs());
-		return new ModelAndView("redirect:/songs");
+		return new ModelAndView("/songs");
 	}
 	
 	@GetMapping("/cart")

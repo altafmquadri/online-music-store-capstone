@@ -58,7 +58,7 @@
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img style="width: 100%; height: 75vh;" src="https://dotandline.net/wp-content/uploads/2018/04/1_58uZVuKlz4bhBJF1BL9qdA-1210x642.jpeg"
+            <img style="width: 100%; height: 55vh;" src="https://dotandline.net/wp-content/uploads/2018/04/1_58uZVuKlz4bhBJF1BL9qdA-1210x642.jpeg"
             class="d-block w-100" alt="chicken">
             <div style="background-color: rgba(0,0,0,.3);"class="carousel-caption d-none d-md-block">
                 <h5>Blue</h5>
@@ -66,7 +66,7 @@
             </div>
         </div>
         <div class="carousel-item">
-            <img style="width: 100%; height: 75vh;"
+            <img style="width: 100%; height: 55vh;"
             src="https://s3.amazonaws.com/images.imvdb.com/video/170091730161-danny-ocean-dembow_music_video_ov.jpg?v=2"
             class="d-block w-100" alt="sweet chiilli chicken">
             <div style="background-color: rgba(0,0,0,.3);"class="carousel-caption d-none d-md-block">
@@ -75,7 +75,7 @@
             </div>
         </div>
         <div class="carousel-item">
-            <img style="width: 100%; height: 75vh;"
+            <img style="width: 100%; height: 55vh;"
             src="https://sss.moda.pe/imagen/apaisado/a-ella-09c77.jpg"
             class="d-block w-100" alt="lo mein">
             <div style="background-color: rgba(0,0,0,.3);"class="carousel-caption d-none d-md-block">
