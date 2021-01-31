@@ -50,6 +50,51 @@
 	  <div style="height: 20px"></div>
 	<div>
 		<h1>Songs</h1>
+		<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"></li>
+        <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></li>
+        <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img style="width: 100%; height: 75vh;" src="https://dotandline.net/wp-content/uploads/2018/04/1_58uZVuKlz4bhBJF1BL9qdA-1210x642.jpeg"
+            class="d-block w-100" alt="chicken">
+            <div style="background-color: rgba(0,0,0,.3);"class="carousel-caption d-none d-md-block">
+                <h5>Blue</h5>
+                <p>The Song that brought the famous anime to an end!</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img style="width: 100%; height: 75vh;"
+            src="https://s3.amazonaws.com/images.imvdb.com/video/170091730161-danny-ocean-dembow_music_video_ov.jpg?v=2"
+            class="d-block w-100" alt="sweet chiilli chicken">
+            <div style="background-color: rgba(0,0,0,.3);"class="carousel-caption d-none d-md-block">
+                <h5>Dembow</h5>
+                <p>Danny Does it Again!</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img style="width: 100%; height: 75vh;"
+            src="https://sss.moda.pe/imagen/apaisado/a-ella-09c77.jpg"
+            class="d-block w-100" alt="lo mein">
+            <div style="background-color: rgba(0,0,0,.3);"class="carousel-caption d-none d-md-block">
+                <h5>A Ella</h5>
+                <p>Karol G delivers!</p>
+            </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </a>
+</div>
+
+<div style="height: 20px;"></div>
 		<div class="mb-3">
 			<form >
 				<div>
